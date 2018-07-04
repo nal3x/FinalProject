@@ -50,4 +50,5 @@ dependencies {
     implementation project(':javaJokes')
     implementation project(path: ':jokedisplay')
     implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:customtabs:27.1.1'
 }
