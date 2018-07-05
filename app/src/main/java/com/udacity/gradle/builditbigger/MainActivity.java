@@ -50,14 +50,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        new EndpointsAsyncTask().execute("Manfred"); //TODO: correct!!!
+        new EndpointsAsyncTask().execute();
     }
 
-    class EndpointsAsyncTask extends AsyncTask<String, Void, String> {
+    class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
         private MyApi myApiService = null;
 
         @Override
-        protected String doInBackground(String... params) {
+        protected String doInBackground(Void... voids) {
             if(myApiService == null) {  // Only do this once
                 MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                         new AndroidJsonFactory(), null)
@@ -75,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
                 myApiService = builder.build();
             }
-
-            //String name = params[0];
 
             try {
                 return myApiService.getJoke().execute().getData();
