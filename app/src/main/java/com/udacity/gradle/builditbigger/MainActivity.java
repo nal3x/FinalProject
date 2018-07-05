@@ -20,8 +20,6 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String mJoke;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +50,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-
-        //Toast.makeText(this, joke, Toast.LENGTH_LONG).show();
-        //Intent intent = new Intent(this, JokeActivity.class);
         new EndpointsAsyncTask().execute("Manfred"); //TODO: correct!!!
     }
 
@@ -81,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 myApiService = builder.build();
             }
 
-            String name = params[0];
+            //String name = params[0];
 
             try {
                 return myApiService.getJoke().execute().getData();
@@ -93,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             if (result != null && !result.equals("")) {
-                //mJoke = result;
                 Intent intent = new Intent(MainActivity.this, JokeActivity.class);
                 intent.putExtra(JokeActivity.JOKE_KEY, result);
                 startActivity(intent);
