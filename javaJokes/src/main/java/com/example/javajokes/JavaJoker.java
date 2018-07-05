@@ -1,5 +1,4 @@
 package com.example.javajokes;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -40,6 +39,5 @@ public class JavaJoker {
         int jokeNumber = random.nextInt(jokesList.size());
         return jokesList.get(jokeNumber);
     }
-
 
 }
