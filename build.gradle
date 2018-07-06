@@ -25,6 +25,6 @@ task testJokeAsyncTask (dependsOn: ":backend:appengineStart") {
   group 'my Custom Tasks'
   description 'Run instrumentation test-check non empty returned string from AsyncTask'
   mustRunAfter ":backend:appengineStart"
-  dependsOn ':app:connectedPaidDebugAndroidTest'
+  dependsOn ':app:connectedAndroidTest'
   finalizedBy ':backend:appengineStop'
 }
