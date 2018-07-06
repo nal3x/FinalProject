@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.jokedisplay.JokeActivity;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -20,10 +21,14 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ProgressBar spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        spinner = findViewById(R.id.progressBar1);
+        spinner.setVisibility(View.GONE);
     }
 
 
@@ -54,7 +59,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
+
         private MyApi myApiService = null;
+
+        @Override
+        protected void onPreExecute() {
+            spinner.setVisibility(View.VISIBLE);
+        }
 
         @Override
         protected String doInBackground(Void... voids) {
@@ -85,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
+            spinner.setVisibility(View.GONE);
             if (result != null && !result.equals("")) {
                 Intent intent = new Intent(MainActivity.this, JokeActivity.class);
                 intent.putExtra(JokeActivity.JOKE_KEY, result);
