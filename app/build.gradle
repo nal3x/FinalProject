@@ -64,7 +64,6 @@ dependencies {
 
 
     testImplementation 'junit:junit:4.12'
-    //implementation project(':javaJokes') //app now depends on java library because backend does
     implementation project(':backend')
     implementation project(':jokedisplay')
     implementation 'com.android.support:support-v4:27.1.1'

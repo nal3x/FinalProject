@@ -31,7 +31,7 @@ public class EmptyTextViewTest {
     public void clickTestJokeButton_fillsJokeTextView() {
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

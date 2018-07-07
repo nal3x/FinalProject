@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ProgressBar spinner;
     private InterstitialAd mInterstitialAd;
-    private final static String  ADS_KEY_1= "ca-app-pub-3940256099942544~3347511713";
     private final static String  ADS_KEY_2= "ca-app-pub-3940256099942544/1033173712";
 
     @Override
@@ -38,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         spinner = findViewById(R.id.progressBar1);
         spinner.setVisibility(View.GONE);
-
-        MobileAds.initialize(this, ADS_KEY_1);
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId(ADS_KEY_2);
@@ -54,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAdFailedToLoad(int errorCode) {
                 // Code to be executed when an ad request fails.
-                new EndpointsAsyncTask().execute();
+                //new EndpointsAsyncTask().execute();
+                Log.d("ERROR", String.valueOf(errorCode));
             }
 
             @Override
